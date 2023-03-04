@@ -20,16 +20,16 @@ mongoose.connect(process.env.DB_CONNECT,{ useNewUrlParser: true, useUnifiedTopol
 catch (error) {
     handleError(error);
     console.log(error);
-  }
+}
 
 //MIDDLEWARES
 app.use(express.json());
 
-// var corsOptions = {
-//   origin: ["https://khana-khazana-nine.vercel.app","https://khana-khazana.ayushtyagi14.repl.co"],
-// };
+var corsOptions = {
+  origin: "http://localhost:3000",
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // ROUTE MIDDLESWARES
 app.use('/api/user',authRoute);

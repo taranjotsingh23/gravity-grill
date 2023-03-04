@@ -10,6 +10,8 @@ const getMenuRoute=require('./routes/getMenu');
 const reservationRoute=require('./routes/reservation');
 const orderedFoodRoute=require('./routes/orderedFood');
 const giveFeedbackRoute=require('./routes/giveFeedback');
+const userOrdersRoute=require('./routes/userOrders');
+const deleteOrderRoute=require('./routes/deleteOrder');
 const cors = require("cors");
 dotenv.config();
 
@@ -37,6 +39,8 @@ app.use('/api',getMenuRoute);
 app.use('/api',reservationRoute);
 app.use('/api',orderedFoodRoute);
 app.use('/api',giveFeedbackRoute);
+app.use('/api',userOrdersRoute);
+app.use('/api',deleteOrderRoute);
 
 app.listen(port,() => {
     console.log(`Server is running at Port Number ${port}`);

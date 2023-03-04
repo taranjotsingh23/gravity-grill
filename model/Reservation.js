@@ -26,6 +26,16 @@ const reservationSchema= new mongoose.Schema({
         type: String,
         required: true
     },
+    contactNumber: {
+        type: String,
+        required: true,
+        max: 10,
+        min: 10
+    },
+    specialRequest: {
+        type: String,
+        default: "Null"
+    },
     order: {
         type: mongoose.Schema.Types.Mixed,
         default: {}

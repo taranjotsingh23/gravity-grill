@@ -8,6 +8,8 @@ router.post("/reservation", async (req, res) => {
         let userEmail=req.body.userEmail;
         let numberOfPeople=req.body.numberOfPeople;
         let date=req.body.date;
+        let contactNumber=req.body.contactNumber;
+        let specialRequest=req.body.specialRequest;
 
     //Create a new user
     const user = new Reservation({
@@ -15,7 +17,9 @@ router.post("/reservation", async (req, res) => {
         userName: userName,
         userEmail: userEmail,
         numberOfPeople: numberOfPeople,
-        date: date
+        date: date,
+        contactNumber: contactNumber,
+        specialRequest: specialRequest
     });
     var savedUser = await user.save();
 

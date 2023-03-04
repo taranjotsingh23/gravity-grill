@@ -16,11 +16,13 @@ router.post("/orderedFood", async (req, res) => {
     var reservationObjectFinding = await Reservation.findOne({ userId: userId });
 
     let arr=[];
+    let totalAmount=0;
 
     for(let i=0;i<order.length;i++)
     {
         var dishObjectFinding = await Menu.findOne({ dishId: order[i] });
         arr.push(dishObjectFinding);
+        totalAmount=totalAmount+dishObjectFinding.dishPrice;
     }
 
     let x={
@@ -31,6 +33,7 @@ router.post("/orderedFood", async (req, res) => {
     delete k._id; 
     delete k.__v;
     k.dishInfo=arr;
+    k.totalAmount=totalAmount;
     // console.log(k)
 
     res.status(200).send({ resCode: 200, details: k });

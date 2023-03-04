@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Reservation = require("../model/Reservation");
+const Menu = require("../model/Menu");
 
 router.post("/orderedFood", async (req, res) => {
     let userId=req.body.userId;
@@ -12,9 +13,27 @@ router.post("/orderedFood", async (req, res) => {
         { $set: { order: order } }
     );
 
-    
+    var reservationObjectFinding = await Reservation.findOne({ userId: userId });
 
-    res.status(200).send({ resCode: 200, message: "Order Added Successfully!!" });
+    let arr=[];
+
+    for(let i=0;i<order.length;i++)
+    {
+        var dishObjectFinding = await Menu.findOne({ dishId: order[i] });
+        arr.push(dishObjectFinding);
+    }
+
+    let x={
+        ...reservationObjectFinding
+    };
+    let k=x._doc;
+
+    delete k._id; 
+    delete k.__v;
+    k.dishInfo=arr;
+    // console.log(k)
+
+    res.status(200).send({ resCode: 200, details: k });
 });
 
 module.exports = router;

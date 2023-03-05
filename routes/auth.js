@@ -111,10 +111,20 @@ router.post("/signup", async (req, res) => {
         userId: userId
       });
 
+
+      const accountSid = "AC6ce261e0d623713a24ef3d2bc802f9cd";
+      const authToken = "6bda8535d7d02ab5f1d580d33443fe92";
+      
+      const client = require("twilio")(accountSid, authToken);
+      client.messages
+        .create({ body: "Greetings from Gravity Grill, you have been successfully registered on our website. We are eager to serve you.", from: "+15677042215", to: "+919667938525" })
+        .then((res)=>(console.log('message has send')))
+        .catch((err)=>{console.log(err);
+      });
 });
 
 
-// //Login
+//Login
 router.post("/login", async (req, res) => {
   //Lets validate the data before we make a user
   const { error } = loginValidation(req.body);

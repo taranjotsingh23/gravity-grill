@@ -15,9 +15,10 @@ const deleteOrderRoute=require('./routes/deleteOrder');
 const cors = require("cors");
 dotenv.config();
 
+
 //Connect to DB
 try {
-mongoose.connect(process.env.DB_CONNECT,{ useNewUrlParser: true, useUnifiedTopology: true },() => console.log('Connected to Database'));
+mongoose.connect(process.env.DB_CONNECT,{useNewUrlParser: true, useUnifiedTopology: true},() => console.log('Connected to Database'));
 }
 catch (error) {
     handleError(error);
@@ -28,7 +29,7 @@ catch (error) {
 app.use(express.json());
 
 var corsOptions = {
-  origin: "http://localhost:3000",
+  origin: ["https://hackhound-nine.vercel.app","http://localhost:3000"]
 };
 
 app.use(cors(corsOptions));

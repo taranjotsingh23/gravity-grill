@@ -36,12 +36,12 @@ router.post("/orderedFood", async (req, res) => {
     k.totalAmount=totalAmount;
     // console.log(k)
 
-    const accountSid = "AC817165cdb6b0e8b42ac59fd059d4574f";
-    const authToken = "1e6dd8c3013685f68545021df958b0d5";
+    const accountSid = "ACa0ea0a4af30028a39bfad4a9c79682cd";
+    const authToken = "cb9542b6111ec7d5ba45db3ba57b0e79";
     
     const client = require("twilio")(accountSid, authToken);
     client.messages
-      .create({ body: "Thank you for choosing Gravity Grill. Your Order has been confirmed. Hope you have an amazing experience with us.", from: "+15074185878", to: "+919667938525" })
+      .create({ body: "Thank you for choosing Gravity Grill. Your Order has been confirmed. Hope you have an amazing experience with us.", from: "+15075225207", to: "+919667938525" })
       .then((res)=>(console.log('message has send')))
       .catch((err)=>{console.log(err);
     });

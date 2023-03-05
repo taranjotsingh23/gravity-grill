@@ -29,7 +29,7 @@ catch (error) {
 app.use(express.json());
 
 var corsOptions = {
-  origin: ["https://hackhound-nine.vercel.app","http://localhost:3000"]
+  origin: ["https://hackhound-nine.vercel.app","http://localhost:3000","https://replit.com/@ayushtyagi14/hackhound","https://73111029-d594-400b-b12b-cc86a22e10c9.id.repl.co/login","https://hackhound.ayushtyagi14.repl.co"]
 };
 
 app.use(cors(corsOptions));
